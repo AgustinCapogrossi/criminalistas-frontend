@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+//import App from './App';
 import reportWebVitals from './reportWebVitals';
+//import MostrarPartida from '.MostrarPartida';
+import CrearPartida from './CrearPartida';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CrearPartida />
   </React.StrictMode>,
   document.getElementById('root')
 );

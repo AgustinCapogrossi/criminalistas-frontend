@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [nickname, setNickname] = useState('');
+
+  const handleNickname = event => {
+    setNickname(event.target.value);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -9,7 +15,7 @@ function App() {
           <section>
             <form>
               <p>Apodo</p>
-              <input type="text" name="nombre" placeholder="Tu Apodo" />
+              <input type="text" placeholder="Tu Apodo" onChange={handleNickname}/>
             </form>
             <button>Jugar</button>
           </section>
