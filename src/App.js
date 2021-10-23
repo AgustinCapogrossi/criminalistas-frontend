@@ -1,40 +1,57 @@
 import React, { useState } from 'react';
-import './App.css';
+import './HomePage/App.css';
+
+let MIN_CHAR_NICKNAME = 2;
 
 function App() {
-  const [nickname, setNickname] = useState([]);
+  const [nickname, setNickname] = useState('');
 
-  const handleNickname = event => {
+
+  const nickNameHandle = event => {
     setNickname(event.target.value);
+    stateButton(event.target.value);
+  }
+
+  
+  const sendNicknameToBase = () => {
+    fetch(`http://localhost:8000/creationuser?user_to_create=${nickname}` ,{
+      method: 'POST',
+      headers:{'Content-Type': 'application/json'},
+      // body: JSON.stringify({"user_to_create":nickname}),
+    }).then(response => response.json);
   };
 
-  const sendNicknameToBase = nick => {
-    fetch('http://localhost:3000/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(nick),
-    }).then(response => response.json());
+  //button config
+  const [button, setButton] = useState(true);
+  
+  function stateButton(nick) {
+    if(nick.length > MIN_CHAR_NICKNAME) {
+      setButton(false);
+    }
+    else {
+      setButton(true);
+    }
   };
+  
 
   return (
     <div className="App">
       <header className="App-header">
         <div>
           <section>
-            <form>
+            <form action="../partidas.html">
               <p>Apodo</p>
               <input
                 type="text"
                 placeholder="Tu Apodo"
-                onChange={handleNickname}
+                onChange={nickNameHandle}
                 maxLength="20"
               />
-              <a
-                onSubmit={sendNicknameToBase(nickname)}
-                href="../partidas.html"
-              >
-                Jugar
-              </a>
+                <button 
+                  disabled={button}
+                  onClick={sendNicknameToBase}>
+                      Jugar
+                </button>
             </form>
           </section>
         </div>
