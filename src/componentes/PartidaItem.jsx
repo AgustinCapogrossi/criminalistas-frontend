@@ -1,9 +1,9 @@
 import React from 'react';
 
 export function PartidaItem({partida}) {
-    const {id, nombre} = partida;
+    const {title} = partida;
 
     return (
-        <li>{nombre}</li>
+        <li>{title}</li>
     )
 }
