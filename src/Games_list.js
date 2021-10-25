@@ -10,17 +10,20 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {servicioPartida} from './servicios/ServicioPartida'
+import {servicioPartida} from './servicios/ServicioPartida';
 
-function getGames() {
+
+/*function getGames() {
   return [{name: "partida1", anfitrion: "juan", players: 3}, {name: "partida2", anfitrion: "lucia", players: 5}];
-}
+}*/
 
 const theme = createTheme();
 
 export default function Games_list() {
-  //const games = servicioPartida.listmatch();
-  var games = getGames();
+
+  const listGames = servicioPartida.listmatch();
+  //var games = getGames();
+  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -35,20 +38,14 @@ export default function Games_list() {
         <Container sx={{ py: 2, bgcolor: 'black' }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4} >
-            {games.map((game) => (
+            {listGames.map((game) => (
               <Grid item key={game} xs={12} sm={6} md={4}>
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column', bgcolor: '#FF9C30'}} 
                 >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2" >
-                      {game.name}
-                    </Typography>
-                    <Typography>
-                      Anfitrion: {game.anfitrion}
-                    </Typography>
-                    <Typography>
-                      Jugadores: {game.players}
+                      {game.game_name}
                     </Typography>
                   </CardContent>
                   <CardActions>

@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Games_list from './Games_list';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {servicioPartida} from './servicios/ServicioPartida'
+import {servicioPartida} from './servicios/ServicioPartida';
 
 const theme = createTheme();
 
@@ -19,7 +19,7 @@ export default function Create_game() {
     console.log({
       name: data.get('name'),
     });
-    servicioPartida.crearSala(data.get('name'), 1, false, false);
+    servicioPartida.crearSala(data.get('name'), 'juani', 1, false, false);
   };
 
   return (
