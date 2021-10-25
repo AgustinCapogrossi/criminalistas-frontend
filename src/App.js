@@ -1,19 +1,15 @@
 import React from 'react';
-import './HomePage/App.css';
-import './HomePage/Home.css';
-import './HomePage/partidasList.css';
 import Home from './HomePage/home';
-import MostrarPartidas from './partidasList';
+import Game_list from './Games_list';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/partidas" component={MostrarPartidas} />
+          <Route exact path="/partidas" component={Game_list} />
         </Switch>
       </div>
     </Router>

@@ -13,16 +13,16 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {servicioPartida} from './servicios/ServicioPartida';
 
 
-/*function getGames() {
+function getGames() {
   return [{name: "partida1", anfitrion: "juan", players: 3}, {name: "partida2", anfitrion: "lucia", players: 5}];
-}*/
+}
 
 const theme = createTheme();
 
 export default function Games_list() {
 
-  const listGames = servicioPartida.listmatch();
-  //var games = getGames();
+  {/*const listGames = servicioPartida.listmatch();*/}
+  var listGames = getGames();
   
   return (
     <ThemeProvider theme={theme}>
@@ -45,7 +45,7 @@ export default function Games_list() {
                 >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2" >
-                      {game.game_name}
+                      {game.name}
                     </Typography>
                   </CardContent>
                   <CardActions>
