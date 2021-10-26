@@ -1,65 +1,81 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {servicioPartida} from './servicios/ServicioPartida';
+import moment from 'moment';
+import { v4 as uuid } from 'uuid';
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import {
+  Box,
+  Button,
+  Card,
+  CardHeader,
+  Chip,
+  Divider,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  TableSortLabel,
+  Tooltip
+} from '@material-ui/core';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
+const listgames = [
+  {name: "criminales", anfitrion: "Rocio", players: 3}, 
+  {name: "detective", anfitrion: "Santiago", players: 5},
+  {name: "juego", anfitrion: "Lenadro", players: 2}
+];
 
-/*function getGames() {
-  return [{name: "partida1", anfitrion: "juan", players: 3}, {name: "partida2", anfitrion: "lucia", players: 5}];
-}*/
-
-const theme = createTheme();
-
-export default function Games_list() {
-
-  const listGames = servicioPartida.listmatch();
-  //var games = getGames();
-  
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar sx={{bgcolor: '#1B1D1F'}}>
-          <Typography variant="h6" color="#FF9C30" noWrap>
-            Sala del Misterio
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <main>
-        <Container sx={{ py: 2, bgcolor: 'black' }} maxWidth="md">
-          {/* End hero unit */}
-          <Grid container spacing={4} >
-            {listGames.map((game) => (
-              <Grid item key={game} xs={12} sm={6} md={4}>
-                <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column', bgcolor: '#FF9C30'}} 
+const Games_list = (props) => (
+  <Card {...props}>
+    <CardHeader title="Sala del misterio" />
+    <Divider />
+    <PerfectScrollbar>
+      <Box sx={{ minWidth: 800, bgcolor: "#FF9C30" }}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>
+                Nombre de la partida
+              </TableCell>
+              <TableCell>
+                Creador
+              </TableCell>
+              <TableCell>
+                Jugadores
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {listgames.map((games) => (
+              <TableRow
+                hover
+                key={games.name}
+              >
+                <TableCell>
+                  {games.name}
+                </TableCell>
+                <TableCell>
+                  {games.anfitrion}
+                </TableCell>
+                <TableCell>
+                  {games.players}
+                </TableCell>
+                <TableCell>
+                  <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{bgcolor: 'black' }}
                 >
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2" >
-                      {game.game_name}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button 
-                      size="small"
-                      sx={{color: 'black'}}
-                    >Unirse a la partida</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
+                  Unirse a la partida
+                </Button>
+                </TableCell>
+              </TableRow>
             ))}
-          </Grid>
-        </Container>
-      </main>
-    </ThemeProvider>
-  );
-}
+          </TableBody>
+        </Table>
+      </Box>
+    </PerfectScrollbar>
+  </Card>
+);
+
+export default Games_list;

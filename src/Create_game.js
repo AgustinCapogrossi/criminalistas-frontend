@@ -5,21 +5,27 @@ import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Games_list from './Games_list';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {servicioPartida} from './servicios/ServicioPartida';
+import Games_list from './Games_list';
 
 const theme = createTheme();
 
 export default function Create_game() {
-  const handleSubmit = (event) => {
+
+  /*const [dataGame, setDataGame] = React.useState({
+                                    Game_name: "",
+                                    game_creator: ""
+                                  });*/
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
     console.log({
       name: data.get('name'),
     });
-    servicioPartida.crearSala(data.get('name'), 'juani', 1, false, false);
+    servicioPartida.createLobby(data.get('name'), 'laura', 1, false, false);
   };
 
   return (
