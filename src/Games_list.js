@@ -49,6 +49,12 @@ export default function Games_list() {
                     <Typography gutterBottom variant="h5" component="h2" >
                       {game.name}
                     </Typography>
+                    <Typography variant="h7" component="h4">
+                     Anfitrión: {game.anfitrion}
+                    </Typography>
+                    <Typography variant="h7" component="h4">
+                      Jugadores: {game.players}
+                    </Typography>
                   </CardContent>
                   <CardActions>
                     <Button 
