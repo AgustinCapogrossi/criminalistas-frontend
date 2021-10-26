@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Home.css';
-import MostrarPartidas from '../partidasList';
+import Games_list from '../Games_list';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 let MIN_CHAR_NICKNAME = 2;
@@ -33,6 +33,7 @@ function Home() {
   }
 
   return (
+
     <Router>
       <div>
         <header className="Home-header">
@@ -52,13 +53,14 @@ function Home() {
                   </button>
                 </Link>
               </form>
-              <Switch>
-                  <Route exact path="/partidas" component={MostrarPartidas} />
-              </Switch>
             </section>
+      <Switch>
+          <Route exact path="/partidas" component={Games_list} />
+      </Switch>
           </div>
         </header>
-      </div>
+    
+    </div>
     </Router>
   );
 }

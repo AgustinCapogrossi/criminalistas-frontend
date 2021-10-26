@@ -1,18 +1,19 @@
 import React from 'react';
 import Home from './HomePage/home';
-import Game_list from './Games_list';
+import Create_game from './Create_game';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
-  return (
-    <Router>
+
+    return(
       <div className="App">
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/partidas" component={Game_list} />
-        </Switch>
-      </div>
-    </Router>
+        <Router>
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/partidas" component={Create_game}/>
+          </Switch>
+        </Router>
+    </div>
   );
 }
 
