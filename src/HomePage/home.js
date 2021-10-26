@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './Home.css';
-import Games_list from '../Games_list';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import Create_game from '../Create_game';
 
 let MIN_CHAR_NICKNAME = 2;
 
@@ -35,7 +35,7 @@ function Home() {
   return (
 
     <Router>
-      <div>
+      <div className="Home">
         <header className="Home-header">
           <div>
             <section>
@@ -47,20 +47,22 @@ function Home() {
                   onChange={nickNameHandle}
                   maxLength="20"
                 />
-                <Link to="/partidas" style={{textDecoration:'none'}}>
+                <Link to="/partidas" style={{ textDecoration: 'none' }}>
                   <button disabled={button} onClick={sendNicknameToBase}>
                     Jugar
                   </button>
                 </Link>
               </form>
             </section>
-      <Switch>
-          <Route exact path="/partidas" component={Games_list} />
-      </Switch>
           </div>
+        
         </header>
-    
-    </div>
+        <div>
+          <Switch>
+              <Route exact path="/partidas" component={Create_game} />
+          </Switch>
+        </div>
+      </div>
     </Router>
   );
 }

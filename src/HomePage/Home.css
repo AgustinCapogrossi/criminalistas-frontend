@@ -1,13 +1,13 @@
+
 .Home-header {
     background-color: #282c34;
     background-image: url('background.jpeg');
     background-position: center;
     background-size: 1390px 720px;
     background-repeat: no-repeat;
-    min-height: 100vh;
-    display: flex;
+    min-height: 100vh; 
+    display:flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
@@ -15,14 +15,29 @@
 
 section {
     margin-top: 27rem;
+    display:flex;
+    flex-direction: column;
     justify-content: center;
 }
-  
-p {
-    margin-top: 15rem;
+
+form {
+    display:flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+
+ p {
+    font-family: fantasy;
+    font-size: italic;
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+    margin-top: 1.5rem;
     margin-bottom: 0.5rem;
 }
-  
   
 input {
     text-emphasis-color: #9999;

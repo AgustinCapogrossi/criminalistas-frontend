@@ -14,7 +14,9 @@ import {servicioPartida} from './servicios/ServicioPartida';
 
 
 function getGames() {
-  return [{name: "partida1", anfitrion: "juan", players: 3}, {name: "partida2", anfitrion: "lucia", players: 5}];
+  return [{name: "criminales", anfitrion: "Rocio", players: 3}, 
+  {name: "detective", anfitrion: "Santiago", players: 5},
+  {name: "juego", anfitrion: "Lenadro", players: 2}];
 }
 
 const theme = createTheme();
