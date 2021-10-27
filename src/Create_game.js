@@ -7,11 +7,11 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {servicioPartida} from './servicios/ServicioPartida';
-import Games_list from './Games_list';
+import {Games_list} from './Games_list';
 
 const theme = createTheme();
 
-export default function Create_game() {
+export const Create_game = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -19,7 +19,7 @@ export default function Create_game() {
     console.log({
       name: data.get('name'),
     });
-    servicioPartida.createLobby(data.get('name'), 'andrea', 1, false, false);
+    servicioPartida.createLobby(data.get('name'), 'fifos', 1, false, false);
   };
 
   return (

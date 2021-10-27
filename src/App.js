@@ -1,7 +1,7 @@
 import React from 'react';
 import './HomePage/App.css';
-import Home from './HomePage/home';
-import Create_game from './Create_game';
+import {Home} from './HomePage/home';
+import {Create_game} from './Create_game';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Lobby_game from './Lobby_game';
 

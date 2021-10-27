@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './HomePage/home';
-//import App from './App';
+//import {Home} from './HomePage/home';
+import App from './App';
 //import Create_game from './Create_game';
 import './index.css';
 //import Lobby_game from './Lobby_game';
@@ -9,7 +9,7 @@ import './index.css';
 
 ReactDOM.render(
   <React.Fragment>
-    <Home />
+    <App />
   </React.Fragment>,
   document.getElementById('root')
 );

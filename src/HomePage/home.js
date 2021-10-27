@@ -1,15 +1,14 @@
 import React, { useRef, useState } from 'react';
 import './Home.css';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import Create_game from '../Create_game';
-import axios from 'axios';
+import {Create_game} from '../Create_game';
 import { servicioPartida } from '../servicios/ServicioPartida';
 
 
 
 let MIN_CHAR_NICKNAME = 2;
 
-function Home() {
+export const Home = (props) => {
   const [nickname, setNickname] = useState('');
 
   const nickNameHandle = event => {
@@ -19,6 +18,7 @@ function Home() {
 
   const sendNicknameToBase = () => {
     servicioPartida.createNickname(nickname);
+    props.history.push('/partidas');
   }
 
   //  button config
@@ -66,5 +66,3 @@ function Home() {
     </Router>
   );
 }
-
-export default Home;

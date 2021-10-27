@@ -26,11 +26,11 @@ import {servicioPartida} from './servicios/ServicioPartida';
   {name: "juego", anfitrion: "Lenadro", players: 2}
 ];*/
 
-export default function Games_list(props) {
+export const Games_list = (props) => {
   const listgames = servicioPartida.listmatch();
   return(
     <Card {...props}>
-      <CardHeader title="Sala del misterio" />
+      <CardHeader title="Sala del misterio" sx={{bgcolor:"#FF9C30"}}/>
       <Divider />
       <PerfectScrollbar>
         <Box sx={{ minWidth: 800, bgcolor: "#FF9C30" }}>
