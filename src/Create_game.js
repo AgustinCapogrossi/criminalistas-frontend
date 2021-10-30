@@ -9,9 +9,15 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {servicioPartida} from './servicios/ServicioPartida';
 import {Games_list} from './Games_list';
 
+
 const theme = createTheme();
 
-export const Create_game = () => {
+export const Create_game = (props) => {
+
+  const newNickname = props.location.state;
+
+  console.log(newNickname);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -19,7 +25,8 @@ export const Create_game = () => {
     console.log({
       name: data.get('name'),
     });
-    servicioPartida.createLobby(data.get('name'), 'fifos', 1, false, false);
+    
+    servicioPartida.createLobby(data.get('name'), newNickname);
   };
 
   return (
@@ -32,7 +39,7 @@ export const Create_game = () => {
           sm={4}
           md={9}
         >
-          <Games_list />
+          <Games_list nickname={newNickname}/>
         </ Grid>
         <Grid item xs={12} sm={8} md={3} component={Paper} elevation={6} square sx={{bgcolor: '#FF9C30'}}>
           <Box

@@ -1,15 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, createContext } from 'react';
 import './Home.css';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import {Create_game} from '../Create_game';
 import { servicioPartida } from '../servicios/ServicioPartida';
 
-
-
 let MIN_CHAR_NICKNAME = 2;
 
 export const Home = (props) => {
-  const [nickname, setNickname] = useState('');
+  
+  const [nickname, setNickname] = useState("");
 
   const nickNameHandle = event => {
     setNickname(event.target.value);
@@ -18,7 +17,7 @@ export const Home = (props) => {
 
   const sendNicknameToBase = () => {
     servicioPartida.createNickname(nickname);
-    props.history.push('/partidas');
+    props.history.push('/partidas', nickname);
   }
 
   //  button config
@@ -59,10 +58,11 @@ export const Home = (props) => {
         </header>
         <div>
           <Switch>
-              <Route exact path="/partidas" component={Create_game} />
+            <Route exact path="/partidas" component={Create_game}/>
           </Switch>
         </div>
       </div>
     </Router>
   );
 }
+

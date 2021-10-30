@@ -27,6 +27,15 @@ import {servicioPartida} from './servicios/ServicioPartida';
 ];*/
 
 export const Games_list = (props) => {
+
+  const newNickname = props.nickname;
+
+  console.log(newNickname);
+
+  const handleJoinGame = () => {
+    servicioPartida.joinGame("partida1", newNickname);
+  }
+
   const listgames = servicioPartida.listmatch();
   return(
     <Card {...props}>
@@ -61,7 +70,7 @@ export const Games_list = (props) => {
                     {games[2]}
                   </TableCell>
                   <TableCell>
-                    {games[4]}
+                    {games[5]}
                   </TableCell>
                   <TableCell>
                     <Button
@@ -69,6 +78,7 @@ export const Games_list = (props) => {
                     fullWidth
                     variant="contained"
                     sx={{bgcolor: 'black' }}
+                    onClick={handleJoinGame}
                   >
                     Unirse a la partida
                   </Button>

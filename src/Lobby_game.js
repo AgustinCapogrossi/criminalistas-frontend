@@ -13,14 +13,9 @@ import Player_list from './Player_list';
 const theme = createTheme();
 
 export default function Lobby_game() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      name: data.get('name'),
-    });
-    //servicioPartida.crearSala(data.get('name'), 'juani', 1, false, false);
+
+  const handleStartGame = () => {
+    servicioPartida.startGame('partida1');
   };
 
   return (
@@ -46,12 +41,13 @@ export default function Lobby_game() {
               bgcolor: '#FF9C30'
             }}
           >
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 15, bgcolor: '#FF9C30' }}>
+            <Box component="form" sx={{ mt: 15, bgcolor: '#FF9C30' }}>
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 9, mb: 2, bgcolor: 'black' }}
+                onClick={handleStartGame}
               >
                 Iniciar partida
               </Button>

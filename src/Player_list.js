@@ -23,7 +23,7 @@ const theme = createTheme();
 
 export default function Player_list() {
 
-  const listPlayers = servicioPartida.listplayers();
+  const listPlayers = servicioPartida.listplayers('partida1');
   
   return (
     <ThemeProvider theme={theme}>
