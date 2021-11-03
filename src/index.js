@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 //import {Home} from './HomePage/home';
 import App from './App';
+import Board from './componentes/board/Board';
 //import Create_game from './Create_game';
 import './index.css';
 import Lobby_game from './Lobby_game';
@@ -9,7 +10,7 @@ import Lobby_game from './Lobby_game';
 
 ReactDOM.render(
   <React.Fragment>
-    <App />
+    <Board />
   </React.Fragment>,
   document.getElementById('root')
 );

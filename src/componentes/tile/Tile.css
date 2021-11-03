@@ -1,0 +1,31 @@
+.tile{
+    display: grid;
+    place-content: center;
+    width: 46px;
+    height: 46px;
+    justify-content: center;
+}
+
+.tile .piece{
+    width: 46px;
+    height: 46px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+}
+
+.tile .piece:hover{
+    cursor: grab;
+}
+
+.tile .piece:active{
+    cursor: grabbing;
+}
+
+.line{
+    background-color: #FF9C30;
+}
+
+.tile img {
+    width: 25px;
+}
