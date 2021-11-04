@@ -1,17 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+//import {Home} from './HomePage/home';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+//import Create_game from './Create_game';
+import './index.css';
+import Lobby_game from './Lobby_game';
+//import LatestOrders from './list_palyers';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.Fragment>
     <App />
-  </React.StrictMode>,
+  </React.Fragment>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

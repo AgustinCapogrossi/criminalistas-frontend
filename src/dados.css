@@ -1,0 +1,11 @@
+.dado{
+    font-size: 10em;
+    width: 70%;
+    padding: 0.25em;
+    color: blueviolet;
+}
+
+.shaking {
+    animation-name: wobble;
+    animation-duration: 1s; 
+}

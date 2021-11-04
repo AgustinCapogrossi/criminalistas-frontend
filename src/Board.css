@@ -1,0 +1,39 @@
+.board{
+    background-color: grey;
+    /*background-image: url('MisterioBoard.jpeg');*/
+    background-position: center;
+    background-size:1390px 780px;
+    background-repeat:no-repeat;
+    min-height: 100vh; 
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns:repeat(20, 62px);
+    grid-template-rows:repeat(20, 38px);
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color:white;
+    /*
+    background-size:1390px 720px;
+    background-repeat: no-repeat;
+    min-height: 100vh; 
+    display: grid;
+    grid-template-columns:repeat(10, 30px);
+    grid-template-rows:repeat(20, 30px);
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;*/
+}
+
+.tile{
+    width: 67px;
+    height: 43px;
+    justify-content: center;
+    justify-content: space-between;
+}
+.black-tile{
+    background-color: blue;
+}
+
+.white-tile{
+    background-color: red;
+}

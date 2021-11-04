@@ -1,0 +1,73 @@
+
+.Home-header {
+    background-color: #282c34;
+    background-image: url('background.jpeg');
+    background-position: center;
+    background-size: 1390px 720px;
+    background-repeat: no-repeat;
+    min-height: 100vh; 
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+section {
+    margin-top: 27rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form {
+    display:flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+
+ p {
+    font-family: fantasy;
+    font-size: italic;
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+  
+input {
+    text-emphasis-color: #9999;
+    text-decoration-line: none;
+    text-align: center;
+    border-radius: 0.5rem;
+}
+  
+Button{
+    background-image: linear-gradient(
+      to right,
+      #ff512f 0%,
+      #f09819 51%,
+      #ff512f 100%
+    );
+    text-decoration: none;
+    font-size: 1.4rem;
+    justify-content: center;
+    margin: 1.5rem;
+    padding: 1rem 1.7rem;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 1.6rem;
+    display: block;
+}
+  
+Button:hover {
+    background-position: right center;
+    color: #fff;
+}
