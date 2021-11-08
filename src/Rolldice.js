@@ -8,25 +8,30 @@ const RollDice = ({sides}) => {
     const [state, setState] = useState({
         dice: "one",
         rolling: false,
-        score: "one"
+        score: 0
     });
 
     const {dice, rolling, score} =  state;
 
     const roll = () => {
-        const newDice = sides[Math.floor(Math.random() * sides.length)];
-        const score = Object.values(newDice);
+        const newDice = servicioTurno.DiceNumber("Todes", "Pepi");
+                        //sides[Math.floor(Math.random() * sides.length)];
+        const newScore = Object.values(newDice);
         setState({
-            dice: Object.keys(newDice),
+            dice: newDice,
             rolling: true,
-            score:  score[0]
+            score: newScore
         });
 
         setTimeout(() => {
             setState((prevState) => ({...prevState, rolling: false}));
         }, 1000);
 
-    }; 
+    };
+    
+    const handleEndTurn = () => {
+        servicioTurno.EndTurn('Todes', 'Pepi');
+    };
 
     return ( 
         <>
@@ -34,15 +39,14 @@ const RollDice = ({sides}) => {
                 <div className= "rolldice-container">
                     <Dado face={String(dice)} rolling={rolling}/>
                 </div>
-                <button onClick={roll} disabled= {rolling}>Tirar dado</button>
-                <button onClick={endTurn}>Terminar turno</button>
-                <h2>Mover: {score}</h2> 
-
+                <button onClick={roll} disabled={rolling}>Tirar dado</button>
+                <button onClick={handleEndTurn}>Terminar turno</button> 
+                <h2>Mover {score} casilleros</h2> 
             </div> 
         
         </>
     );
-}
+};
 
 RollDice.defaultProps = {
     sides: [
@@ -52,7 +56,7 @@ RollDice.defaultProps = {
         {four: 4},
         {five: 5},
         {six: 6}
-    ]
-}
+    ],
+};
 
 export default RollDice;
