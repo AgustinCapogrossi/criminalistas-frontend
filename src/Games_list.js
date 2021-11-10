@@ -33,7 +33,7 @@ export const Games_list = (props) => {
   console.log(newNickname);
 
   const handleJoinGame = () => {
-    servicioPartida.joinGame("partida1", newNickname);
+    servicioPartida.joinGame("partida2", newNickname);
   }
 
   const listgames = servicioPartida.listmatch();

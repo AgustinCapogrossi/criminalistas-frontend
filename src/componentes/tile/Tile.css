@@ -1,17 +1,17 @@
 .tile{
     display: grid;
     place-content: center;
-    width: 46px;
-    height: 46px;
+    width: 40px;
+    height: 40px;
     justify-content: center;
 }
 
 .tile .piece{
-    width: 46px;
-    height: 46px;
+    width: 40px;
+    height: 40px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 25px;
+    background-size: 23px;
 }
 
 .tile .piece:hover{
@@ -27,5 +27,5 @@
 }
 
 .tile img {
-    width: 25px;
+    width: 23px;
 }

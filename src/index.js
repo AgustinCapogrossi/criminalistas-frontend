@@ -10,7 +10,7 @@ import Lobby_game from './Lobby_game';
 
 ReactDOM.render(
   <React.Fragment>
-    <Board />
+    <App/>
   </React.Fragment>,
   document.getElementById('root')
 );

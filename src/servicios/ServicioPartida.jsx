@@ -33,28 +33,6 @@ async function startGame(game_to_start) {
   }
 }
 
-/*function listmatch(){
-  useEffect(() => {
-    fetchPartidas()
-  }, [])
-  
-  const [partidas, setPartidas] = useState([]);
-  
-  const fetchPartidas = async () => {
-    const response = await axios.get(`http://127.0.0.1:8000/game/show_available_games`, {
-      headers: {
-         authorization: 'game/show_available_games' ,
-         'Access-Control-Allow-Origin': '*',
-         'Content-Type': 'application/json'
-      } 
-    });
-    console.log(response);
-    setPartidas(response);
-  }
-
-  return partidas;
-}*/
-
 function listmatch(){
   useEffect(() => {
     fetchPartidas()

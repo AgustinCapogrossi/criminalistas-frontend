@@ -15,7 +15,7 @@ const theme = createTheme();
 export default function Lobby_game() {
 
   const handleStartGame = () => {
-    servicioPartida.startGame('partida1');
+    servicioPartida.startGame('partida2');
   };
 
   return (
