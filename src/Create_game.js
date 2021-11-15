@@ -18,15 +18,25 @@ export const Create_game = (props) => {
 
   console.log(newNickname);
 
+  var ws = null;
+
+  let datas = [];
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
     console.log({
       name: data.get('name'),
     });
     
-    servicioPartida.createLobby(data.get('name'), newNickname);
+    datas.push("CreationGame");
+    datas.push(data.get('name'));
+    datas.push(newNickname);
+
+    ws = new WebSocket(`ws://127.0.0.1:8000/ws`);
+    ws.onopen = () => ws.send(datas);
+
+    //servicioPartida.createLobby(data.get('name'), newNickname);
   };
 
   return (

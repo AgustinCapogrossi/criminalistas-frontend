@@ -33,10 +33,24 @@ export const Games_list = (props) => {
   console.log(newNickname);
 
   const handleJoinGame = () => {
-    servicioPartida.joinGame("partida1", newNickname);
+    //servicioPartida.joinGame("partida2", newNickname);
+
+    useEffect(() => {
+
+      ws.onmessage = (e) => { 
+
+        const parsedJson = JSON.parse(e.data);
+        
+        if (parsedJson.action === 'roll_dice') {
+          setDice(parsedJson.dice);
+        }
+          
+      };
+    });
+
   }
 
-  const listgames = servicioPartida.listmatch();
+  const listgames = []
   return(
     <Card {...props}>
       <CardHeader title="Sala del misterio" sx={{bgcolor:"#FF9C30"}}/>
