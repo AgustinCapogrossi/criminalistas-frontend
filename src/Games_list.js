@@ -18,7 +18,7 @@ import {
 } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import {servicioPartida} from './servicios/ServicioPartida';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 
 /*const listgames = [
@@ -30,18 +30,19 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 export const Games_list = (props) => {
 
   const newNickname = props.nickname;
-  const getHistory = props.newHistory;
+  const getHistory = props.newhistory;
 
   console.log(newNickname);
 
-//  const handleJoinGame = (gamepick) => {
-//    servicioPartida.joinGame(gamepick, newNickname);
-//    getHistory.push('/partidas/join',gamepick);
-//  }
+  const handleJoinGame = (gamepick) => {
+    servicioPartida.joinGame(gamepick, newNickname);
+    getHistory.push('/partidas/join',gamepick);
+ }
 
   const listgames = servicioPartida.listmatch();
 
   return(
+    <Router>
     <Card {...props}>
       <CardHeader title="Sala del misterio" sx={{bgcolor:"#FF9C30"}}/>
       <Divider />
@@ -77,15 +78,15 @@ export const Games_list = (props) => {
                     {games[5]}
                   </TableCell>
                   <TableCell>
-                  <Link to='/partidas/join'>
-                    <Button
+                  <Link to='/partidas/join' style={{ textDecoration: 'none' }}>
+                    <button
                       fullWidth
                       variant="contained"
                       sx={{bgcolor: 'black' }}
-                      //onClick={handleJoinGame(games[1])}
+                      onClick={handleJoinGame(games[1])}
                     >
                      Unirse a la partida
-                    </Button>
+                    </button>
                   </Link>
                   </TableCell>
                 </TableRow>
@@ -95,5 +96,6 @@ export const Games_list = (props) => {
         </Box>
       </PerfectScrollbar>
     </Card>
+    </Router>
   );
 }
