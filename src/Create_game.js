@@ -29,6 +29,7 @@ export const Create_game = (props) => {
       name: data.get('name'),
     });
 
+     servicioPartida.createLobby(data.get('name'), newNickname);
      props.history.push('/partidas/join', newNickname);
   };
 
