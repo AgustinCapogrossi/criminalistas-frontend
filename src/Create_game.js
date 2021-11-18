@@ -6,8 +6,10 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import {servicioPartida} from './servicios/ServicioPartida';
 import {Games_list} from './Games_list';
+import {Lobby_game} from './Lobby_game';
 
 
 const theme = createTheme();
@@ -15,21 +17,23 @@ const theme = createTheme();
 export const Create_game = (props) => {
 
   const newNickname = props.location.state;
+  const newHistory = props.history;
 
   console.log(newNickname);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
     console.log({
       name: data.get('name'),
     });
-    
-    servicioPartida.createLobby(data.get('name'), newNickname);
+
+     props.history.push('/partidas/join', newNickname);
   };
 
   return (
+  <Router>
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh', bgcolor: 'black'}}>
         <CssBaseline />
@@ -39,7 +43,7 @@ export const Create_game = (props) => {
           sm={4}
           md={9}
         >
-          <Games_list nickname={newNickname}/>
+          <Games_list nickname={newNickname} newhistory={newHistory} />
         </ Grid>
         <Grid item xs={12} sm={8} md={3} component={Paper} elevation={6} square sx={{bgcolor: '#FF9C30'}}>
           <Box
@@ -63,18 +67,24 @@ export const Create_game = (props) => {
                 autoComplete="name"
                 autoFocus
               />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2, bgcolor: 'black' }}
-              >
-                Crear partida
-              </Button>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2, bgcolor: 'black' }}
+                >
+                  Crear partida
+                </Button>
             </Box>
           </Box>
         </Grid>
+        <div>
+          <Switch>
+            <Route exact path="/partidas/join" component={Lobby_game} />
+          </Switch>
+        </div>
       </Grid>
     </ThemeProvider>
+  </Router>
   );
 }

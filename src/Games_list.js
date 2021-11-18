@@ -18,6 +18,7 @@ import {
 } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import {servicioPartida} from './servicios/ServicioPartida';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 
 /*const listgames = [
@@ -29,14 +30,17 @@ import {servicioPartida} from './servicios/ServicioPartida';
 export const Games_list = (props) => {
 
   const newNickname = props.nickname;
+  const getHistory = props.newHistory;
 
   console.log(newNickname);
 
-  const handleJoinGame = () => {
-    servicioPartida.joinGame("partida1", newNickname);
-  }
+//  const handleJoinGame = (gamepick) => {
+//    servicioPartida.joinGame(gamepick, newNickname);
+//    getHistory.push('/partidas/join',gamepick);
+//  }
 
   const listgames = servicioPartida.listmatch();
+
   return(
     <Card {...props}>
       <CardHeader title="Sala del misterio" sx={{bgcolor:"#FF9C30"}}/>
@@ -57,7 +61,7 @@ export const Games_list = (props) => {
                 </TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody >
               {listgames.map((games) => (
                 <TableRow
                   hover
@@ -73,15 +77,16 @@ export const Games_list = (props) => {
                     {games[5]}
                   </TableCell>
                   <TableCell>
+                  <Link to='/partidas/join'>
                     <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{bgcolor: 'black' }}
-                    onClick={handleJoinGame}
-                  >
-                    Unirse a la partida
-                  </Button>
+                      fullWidth
+                      variant="contained"
+                      sx={{bgcolor: 'black' }}
+                      //onClick={handleJoinGame(games[1])}
+                    >
+                     Unirse a la partida
+                    </Button>
+                  </Link>
                   </TableCell>
                 </TableRow>
               ))}

@@ -7,15 +7,18 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {servicioPartida} from './servicios/ServicioPartida';
-import Player_list from './Player_list';
+//import {Player_list} from './Player_list';
 
 
 const theme = createTheme();
 
-export default function Lobby_game() {
+export const Lobby_game = (props) => {
+
+
+  const getLobby = props.location.state;
 
   const handleStartGame = () => {
-    servicioPartida.startGame('partida1');
+    servicioPartida.startGame(getLobby);
   };
 
   return (
@@ -28,7 +31,7 @@ export default function Lobby_game() {
           sm={4}
           md={10}
         >
-          <Player_list />
+           {/* <Player_list lobbyName={getLobby} />  */}
         </ Grid>
         <Grid item xs={12} sm={8} md={2} component={Paper} elevation={6} square sx={{bgcolor: '#FF9C30'}}>
           <Box

@@ -3,7 +3,7 @@ import './HomePage/App.css';
 import {Home} from './HomePage/home';
 import {Create_game} from './Create_game';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Lobby_game from './Lobby_game';
+import {Lobby_game} from './Lobby_game';
 
 function App() {
 
@@ -13,6 +13,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/partidas" component={Create_game}/>
+            <Route exact path="/partidas/join" component={Lobby_game}/>
           </Switch>
         </Router>
     </div>
