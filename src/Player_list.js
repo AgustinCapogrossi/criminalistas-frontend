@@ -13,17 +13,15 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {servicioPartida} from './servicios/ServicioPartida';
 
 
-/*function getGames() {
-  return [{jugador: "Rocio"}, 
-  {jugador: "Santiago"},
-  {jugador: "Lenadro"}];
-}*/
-
 const theme = createTheme();
 
-export default function Player_list() {
+export const Player_list = (props) => {
 
-  const listPlayers = servicioPartida.listplayers('partida1');
+  const LobbyName = props.lobby;
+  console.log("Lobbyname is: "+LobbyName);
+
+
+  const listPlayers = servicioPartida.listplayers(LobbyName);
   
   return (
     <ThemeProvider theme={theme}>
@@ -31,7 +29,7 @@ export default function Player_list() {
       <AppBar position="relative">
         <Toolbar sx={{bgcolor: '#1B1D1F'}}>
           <Typography variant="h6" color="#FF9C30" noWrap>
-            Nombre de la partida
+            {LobbyName}
           </Typography>
         </Toolbar>
       </AppBar>

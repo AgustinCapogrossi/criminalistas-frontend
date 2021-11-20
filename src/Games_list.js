@@ -21,12 +21,6 @@ import {servicioPartida} from './servicios/ServicioPartida';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 
-/*const listgames = [
-  {name: "criminales", anfitrion: "Rocio", players: 3}, 
-  {name: "detective", anfitrion: "Santiago", players: 5},
-  {name: "juego", anfitrion: "Lenadro", players: 2}
-];*/
-
 export const Games_list = (props) => {
 
   const newNickname = props.nickname;
@@ -34,9 +28,17 @@ export const Games_list = (props) => {
 
   console.log(newNickname);
 
+  const data2pass = []  
+
   const handleJoinGame = (gamepick) => {
+    const isAdmin = false;
     servicioPartida.joinGame(gamepick, newNickname);
-    getHistory.push('/partidas/join',gamepick);
+    //After to execute the service, we put in array the data to pass to the next page
+    //In the first index we put de nickname and in the second index we put the lobby name.
+    data2pass.push(newNickname);
+    data2pass.push(gamepick);
+    data2pass.push(isAdmin);
+    getHistory.push('/partidas/join', data2pass);
  }
 
   const listgames = servicioPartida.listmatch();
@@ -79,14 +81,14 @@ export const Games_list = (props) => {
                   </TableCell>
                   <TableCell>
                   <Link to='/partidas/join' style={{ textDecoration: 'none' }}>
-                    <button
+                    <Button
                       fullWidth
                       variant="contained"
                       sx={{bgcolor: 'black' }}
-                      onClick={handleJoinGame(games[1])}
+                      onClick={()=>{handleJoinGame(games[1])}}
                     >
                      Unirse a la partida
-                    </button>
+                    </Button>
                   </Link>
                   </TableCell>
                 </TableRow>
