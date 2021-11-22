@@ -9,10 +9,9 @@ import Board from './componentes/board/Board';
 
 function App() {
 
-    return(
-      <div id="App">
-        <Board />
-        {/* <Router>
+  return(
+    <div id="App">
+        <Router>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/partidas" component={Create_game}/>
@@ -20,8 +19,8 @@ function App() {
               <Route exact path="/board" component={Board}/>
             </div>
           </Switch>
-        </Router> */}
-      </div>
+        </Router> 
+    </div>
   );
 }
 
