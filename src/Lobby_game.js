@@ -25,10 +25,17 @@ export const Lobby_game = (props) => {
   const getLobby = getProps[1];
   console.log("GetLobby is: "+getLobby);
 
-
   //Here we create a new variable to know if the user is the Host
   const isAdmin = getProps[2];
   console.log("isAdmin is: "+isAdmin);
+
+  //Here we catch the close of window event
+  window.addEventListener("beforeunload", function(e){
+    var confirmationMessage = "\o/";
+    servicioPartida.deleteFromLobby(getUser, getLobby);
+    (e || window.event).returnValue = confirmationMessage;
+    return confirmationMessage;                            
+  }, {capture: true});
 
   //Here we catch the Start Game.
   const handleStartGame = () => {
@@ -69,15 +76,14 @@ export const Lobby_game = (props) => {
                   sx={{ mt: 9, mb: 2, bgcolor: 'black' }}
                   onClick={() => handleStartGame}
                 >
-                Iniciar partida
-              </Button> :
-                
+                  Iniciar partida
+                </Button> :
+  
                 <div> 
                   Waiting for the host to start the game...
-                </div>
-
+                </div>                
               }
-
+              
             </Box>
           </Box>
         </Grid>

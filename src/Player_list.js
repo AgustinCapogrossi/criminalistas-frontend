@@ -20,9 +20,9 @@ export const Player_list = (props) => {
   const LobbyName = props.lobby;
   console.log("Lobbyname is: "+LobbyName);
 
-
+  //Here we have the const that will be used to get the players of the lobby
   const listPlayers = servicioPartida.listplayers(LobbyName);
-  
+    
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

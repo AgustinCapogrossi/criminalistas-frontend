@@ -29,10 +29,12 @@ export const Create_game = (props) => {
       name: data.get('name'),
     });
      const isAdmin = true;
-     const data2pass =[newNickname,data.get('name')];
-     data2pass.push(isAdmin);
+    
+     const data2pass =[newNickname,data.get('name'),isAdmin];
      console.log(data2pass);
+    
      servicioPartida.createLobby(data.get('name'), newNickname);
+    
      props.history.push('/partidas/join', data2pass);
   };
 

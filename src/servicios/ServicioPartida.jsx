@@ -2,23 +2,25 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
 
+
 async function createNickname(nickname){
   try {
-     await axios.post(`http://127.0.0.1:8000/user/creationuser?user_to_create=${nickname}`);
+    await axios.post(`http://127.0.0.1:8000/user/creationuser?user_to_create=${nickname}`);
   } catch (error){
-      console.log(error);
+    console.log(error);
   }
 }
 
 async function createLobby(game_name, game_creator) {
   try {
-    await axios.post(`http://127.0.0.1:8000/game/creationgame?game_name=${game_name}&game_creator=${game_creator}`);
+    await axios.post(`http://127.0.0.1:8000/game/creationgame?game_name=${game_name}&game_creator=${game_creator}`); 
   } catch (error){
     console.log(error);
   }
 }
 
 async function joinGame(game_to_play, user_to_play) {
+  
   try {
     await axios.post(`http://127.0.0.1:8000/game/joingame?game_to_play=${game_to_play}&user_to_play=${user_to_play}`);
   } catch (error){
@@ -35,10 +37,15 @@ async function startGame(game_to_start) {
 }
 
 function listmatch(){
+
   useEffect(() => {
-    fetchPartidas()
+    const interval = setInterval(() => {
+          fetchPartidas()
+         }, 1000);
+    return () => clearInterval(interval);
   }, [])
-  
+
+
   const [partidas, setPartidas] = useState([]);
   
   const requestOptions = {
@@ -59,9 +66,15 @@ function listmatch(){
 
 function listplayers(game_name){
   useEffect(() => {
-    fetchPlayers()
+    const interval = setInterval(() => {
+          fetchPlayers()
+         }, 1000);
+    return () => clearInterval(interval);
   }, [])
-  
+
+
+  console.log(game_name);
+
   const [players, setPlayers] = useState([]);
   
   const requestOptions = {
@@ -80,5 +93,14 @@ function listplayers(game_name){
   return players;
 }
 
+async function deleteFromLobby(user_name) {
+    try {
+      await axios.delete(`http://127.0.0.1:8000/game/exitgame?player_to_exit=${user_name}`);
+    } 
+    catch (error){
+      console.log(error);
+    }
+}  
 
-export const servicioPartida = {createLobby, listmatch, listplayers, createNickname, joinGame, startGame}
+
+export const servicioPartida = {createLobby, listmatch, listplayers, createNickname, joinGame, startGame, deleteFromLobby};
