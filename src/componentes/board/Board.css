@@ -1,0 +1,14 @@
+#board{
+    display: grid;
+    grid-template-columns: repeat(20, 40px);
+    grid-template-rows: repeat(20, 40px);
+    background-size: 800px 800px;
+    background-color: black /*rgb(116, 11, 46)*/;
+    background-image: url("2021-11-21_22-41.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-content: center;
+}
+
+
+
