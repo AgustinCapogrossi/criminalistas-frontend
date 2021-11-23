@@ -10,7 +10,7 @@ import { servicioPartida } from './servicios/ServicioPartida';
 import { Player_list } from './Player_list';
 import { BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import { Create_game } from './Create_game';
-
+import {mysteryBoard} from './componentes/board/Board';
 
 const theme = createTheme();
 
@@ -51,7 +51,7 @@ export const Lobby_game = props => {
   //Here we catch the Start Game.
   const handleStartGame = () => {
     servicioPartida.startGame(getLobby);
-    //props.history.push('/game');
+    props.history.push('/game');
   };
 
   return (
@@ -88,20 +88,26 @@ export const Lobby_game = props => {
           >
             <Box component="form" sx={{ mt: 15, bgcolor: '#FF9C30' }}>
               {isAdmin ? (
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 9, mb: 2, bgcolor: 'black' }}
-                  onClick={() => handleStartGame}
-                >
-                  Iniciar partida
-                </Button>
-              ) : (
+               <Link to='/game' style={{ textDecoration: 'none' }}> 
+                 <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 9, mb: 2, bgcolor: 'black' }}
+                    onClick={() => handleStartGame}
+                  >
+                    Iniciar partida
+                  </Button>
+                </Link>
+                ) : (
                 <div>
                   <p>Waiting for the host to start the game...</p>
                 </div>
               )}
+                
+              <Switch>
+                <Route exact path="/game" component={mysteryBoard} />
+              </Switch>
               
                     <Button
                       type="submit"
