@@ -13,7 +13,11 @@ async function createNickname(nickname){
 
 async function createLobby(game_name, game_creator) {
   try {
-    await axios.post(`http://127.0.0.1:8000/game/creationgame?game_name=${game_name}&game_creator=${game_creator}`); 
+    await axios.post(`http://127.0.0.1:8000/game/creationgame?game_name=${game_name}&game_creator=${game_creator}`);
+    const webSockeUser = new WebSocket(`ws://localhost:8000/ws/${game_name}/${game_creator}/`);
+    webSockeUser.onopen = () => {
+      console.log('Connected to the server!');
+    }
   } catch (error){
     console.log(error);
   }
@@ -23,6 +27,10 @@ async function joinGame(game_to_play, user_to_play) {
   
   try {
     await axios.post(`http://127.0.0.1:8000/game/joingame/${game_to_play}/${user_to_play}?game_to_play=${game_to_play}&user_to_play=${user_to_play}`);
+    const webSockeUser = new WebSocket(`ws://localhost:8000/ws/${game_to_play}/${user_to_play}/`);
+    webSockeUser.onopen = () => {
+      console.log('Connected to the server!');
+    }
   } catch (error){
     console.log(error);
   }
@@ -30,14 +38,7 @@ async function joinGame(game_to_play, user_to_play) {
 
 async function startGame(game_to_start, nickname) {
   try {
-    //await axios.post(`http://127.0.0.1:8000/game/start_game?game_to_start=${game_to_start}`);
-
-    const webSockeUser = new WebSocket(`ws://localhost:8000/ws/${game_to_start}/${nickname}`);
-
-    webSockeUser.onopen = () => {
-      console.log('Connected to the server!');
-    }
-
+    await axios.post(`http://127.0.0.1:8000/game/${game_to_start}/${nickname}/start_game`);
   } catch (error){
     console.log(error);
   }
