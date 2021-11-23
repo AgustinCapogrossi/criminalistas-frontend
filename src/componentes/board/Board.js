@@ -6,10 +6,8 @@ import './Board.css';
 //import useKey from "@rooks/use-key";
 import { useKeys } from "rooks";
 import { Box, Button } from '@material-ui/core';
-import { servicioTurno } from './servicios/servicioTurno';
-import { servicioPartida } from './servicios/ServicioPartida';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import {Home} from './HomePage/home';
+
 
 const vertical = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14",
                     "15","16","17","18","19","20"];
@@ -28,26 +26,26 @@ export const mysteryBoard = (props) => {
 
     //movimiento de peones 
     const moveDown = () => {
-        if(pieceVerde.image === `imagenes/peon-verde.png`){
-            setPieceVerde({image:`imagenes/peon-verde.png`, x: pieceVerde.x, y: pieceVerde.y - 1})
+        if(pieceVerde.image === `public/imagenes/peon-verde.png`){
+            setPieceVerde({image:`public/imagenes/peon-verde.png`, x: pieceVerde.x, y: pieceVerde.y - 1})
         }
     }
 
     const moveUp = () => {
-        if(pieceVerde.image === `imagenes/peon-verde.png`){
-            setPieceVerde({image:`imagenes/peon-verde.png`, x: pieceVerde.x, y: pieceVerde.y + 1})
+        if(pieceVerde.image === `public/imagenes/peon-verde.png`){
+            setPieceVerde({image:`public/imagenes/peon-verde.png`, x: pieceVerde.x, y: pieceVerde.y + 1})
         }
     }
 
     const moveRight = () => {
-        if(pieceVerde.image === `imagenes/peon-verde.png`){
-            setPieceVerde({image:`imagenes/peon-verde.png`, x: pieceVerde.x + 1, y: pieceVerde.y})
+        if(pieceVerde.image === `public/imagenes/peon-verde.png`){
+            setPieceVerde({image:`public/imagenes/peon-verde.png`, x: pieceVerde.x + 1, y: pieceVerde.y})
         }
     }
 
     const moveLeft = () => {
-        if(pieceVerde.image === `imagenes/peon-verde.png`){
-            setPieceVerde({image:`imagenes/peon-verde.png`, x: pieceVerde.x - 1, y: pieceVerde.y})
+        if(pieceVerde.image === `public/imagenes/peon-verde.png`){
+            setPieceVerde({image:`public/imagenes/peon-verde.png`, x: pieceVerde.x - 1, y: pieceVerde.y})
         }
     }
     
@@ -84,10 +82,7 @@ export const mysteryBoard = (props) => {
         }
     }
     
-    const handleGoBack = () => {
-    servicioPartida.deleteFromLobby(getUser, getLobby);
-    props.history.push('/');
-    }
+
     
     return (
       <Router>
@@ -137,23 +132,11 @@ export const mysteryBoard = (props) => {
                 >
                     Terminar turno
                 </Button>
-                
+
                 <Link to='/' style={{ textDecoration: 'none' }}>
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        sx={{bgcolor: 'black' }}
-                        size="large"
-                        onClick={handleGoBack}
-                    >
-                        Salir
-                    </Button>
+
                 </Link>
-                
-                  <Switch>
-                    Route exact path="/" component={Home} />
-                  </Switch>                
-                                      
+
             </Box>
     
         </div>

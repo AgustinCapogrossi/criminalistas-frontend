@@ -3,7 +3,7 @@ import axios from 'axios';
 
 async function DiceNumber(player_name, game_name) {
     try {
-        await axios.post(`http://127.0.0.1:8000/player/dice_number?player_name=${player_name}&game_name=${game_name}`);
+        await axios.post(`http://127.0.0.1:8000/player/${game_name}/${player_name}/dice_number`);
     } catch (error) {
         console.log(error);
     }
@@ -11,31 +11,15 @@ async function DiceNumber(player_name, game_name) {
 
 async function EndTurn(player_name, game_name) {
     try {
-        await axios.post(`http://127.0.0.1:8000/player/end_turn?player_name=${player_name}&game_name=${game_name}`);
+        await axios.post(`http://127.0.0.1:8000/${game_name}/${player_name}/end_turn`);
     } catch (error) {
         console.log(error);
     } 
 }
 
-async function Envelope(game_name) {
+async function Suspicion(player_who_suspects, game_name, monster_card, victim_card, room_card) {
     try {
-        await axios.post(`http://127.0.0.1:8000/cards/envelope?game_name=${game_name}`);
-    } catch (error) {
-        console.log(error);
-    }  
-}
-
-async function DistributeCards(a_game) {
-    try {
-        await axios.post(`http://127.0.0.1:8000/cards/distribute_cards?a_game=${game_name}`);
-    } catch (error) {
-        console.log(error);
-    } 
-}
-
-async function Suspicion(player_who_suspects, monster_card, victim_card, room_card) {
-    try {
-        await axios.post(`http://127.0.0.1:8000/cards/suspicion?player_who_suspects=${player_who_suspects}&monster_card=${monster_card}&victim_card=${victim_card}&room_card=${room_card}`);
+        await axios.post(`http://127.0.0.1:8000/cards/suspicion/${game_name}/${player_who_suspects}?monster_card=${monster_card}&victim_card=${victim_card}&room_card=${room_card}`);
     } catch (error) {
         console.log(error);
     } 
