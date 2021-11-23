@@ -4,6 +4,7 @@ import {Home} from './HomePage/home';
 import {Create_game} from './Create_game';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {Lobby_game} from './Lobby_game';
+import {mysteryBoard} from './componentes/board/Board';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/partidas" component={Create_game}/>
             <Route exact path="/partidas/join" component={Lobby_game}/>
+            <Route exact path="/game" component= {mysteryBoard}/>
           </Switch>
         </Router>
     </div>
