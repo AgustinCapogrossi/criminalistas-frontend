@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-
-
+//import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 async function createNickname(nickname){
   try {
     await axios.post(`http://127.0.0.1:8000/user/creationuser?user_to_create=${nickname}`);
+
   } catch (error){
     console.log(error);
   }
@@ -22,15 +22,22 @@ async function createLobby(game_name, game_creator) {
 async function joinGame(game_to_play, user_to_play) {
   
   try {
-    await axios.post(`http://127.0.0.1:8000/game/joingame?game_to_play=${game_to_play}&user_to_play=${user_to_play}`);
+    await axios.post(`http://127.0.0.1:8000/game/joingame/${game_to_play}/${user_to_play}?game_to_play=${game_to_play}&user_to_play=${user_to_play}`);
   } catch (error){
     console.log(error);
   }
 }
 
-async function startGame(game_to_start) {
+async function startGame(game_to_start, nickname) {
   try {
-    await axios.post(`http://127.0.0.1:8000/game/start_game?game_to_start=${game_to_start}`);
+    //await axios.post(`http://127.0.0.1:8000/game/start_game?game_to_start=${game_to_start}`);
+
+    const webSockeUser = new WebSocket(`ws://localhost:8000/ws/${game_to_start}/${nickname}`);
+
+    webSockeUser.onopen = () => {
+      console.log('Connected to the server!');
+    }
+
   } catch (error){
     console.log(error);
   }
@@ -100,7 +107,7 @@ async function deleteFromLobby(user_name) {
     catch (error){
       console.log(error);
     }
-}  
+}
 
 
 export const servicioPartida = {createLobby, listmatch, listplayers, createNickname, joinGame, startGame, deleteFromLobby};

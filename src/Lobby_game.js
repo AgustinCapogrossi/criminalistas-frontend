@@ -18,6 +18,7 @@ export const Lobby_game = props => {
   //Here we catch the array in props passed by the parent component
   // In the props we have in index 0: the username, and in index 1: the lobby name
   const getProps = props.location.state;
+  console.log(getProps);
 
   //Here we spare the username and the lobby name in two variables
   const getUser = getProps[0];
@@ -31,16 +32,16 @@ export const Lobby_game = props => {
   console.log('isAdmin is: ' + isAdmin);
 
   //Here we catch the close of window event
-  window.addEventListener(
-    'beforeunload',
-    function (e) {
-      var confirmationMessage = 'o/';
-      servicioPartida.deleteFromLobby(getUser, getLobby);
-      (e || window.event).returnValue = confirmationMessage;
-      return confirmationMessage;
-    },
-    { capture: true }
-  );
+  // window.addEventListener(
+  //   'beforeunload',
+  //   function (e) {
+  //     var confirmationMessage = 'o/';
+  //     servicioPartida.deleteFromLobby(getUser, getLobby);
+  //     (e || window.event).returnValue = confirmationMessage;
+  //     return confirmationMessage;
+  //   },
+  //   { capture: true }
+  // );
 
   //Here we catch the button of go back to the games list
   const handleGoBack = () => {
@@ -50,8 +51,8 @@ export const Lobby_game = props => {
 
   //Here we catch the Start Game.
   const handleStartGame = () => {
-    servicioPartida.startGame(getLobby);
-    //props.history.push('/game');
+    servicioPartida.startGame(getLobby, getUser);
+    //props.history.push('/partidas/join');
   };
 
   return (
@@ -93,7 +94,7 @@ export const Lobby_game = props => {
                   fullWidth
                   variant="contained"
                   sx={{ mt: 9, mb: 2, bgcolor: 'black' }}
-                  onClick={() => handleStartGame}
+                  onClick={handleStartGame}
                 >
                   Iniciar partida
                 </Button>
